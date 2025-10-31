@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyward Protocol — Collective Prosperity, Elevated</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #8ED3F0 0%, #C6E7FF 40%, #FFF8E3 100%);
+      color: #1f2d3d;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Background atmosphere */
+    .sky-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%),
+                  linear-gradient(180deg, rgba(140,200,255,0.4) 0%, rgba(255,230,180,0.3) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floating-islands {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.45;
+    }
+
+    .crystal {
+      position: absolute;
+      filter: drop-shadow(0 15px 35px rgba(30,80,130,0.3));
+      animation: float 28s ease-in-out infinite;
+    }
+
+    .crystal:nth-child(1) { left: 10%; top: 15%; width: 180px; animation-delay: 0s; }
+    .crystal:nth-child(2) { right: 12%; top: 35%; width: 200px; animation-delay: 8s; }
+    .crystal:nth-child(3) { left: 20%; bottom: 15%; width: 160px; animation-delay: 16s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-25px); }
+    }
+
+    header {
+      text-align: center;
+      padding: 6rem 2rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3A86FF 0%, #6BCBFF 50%, #FFE882 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      margin-top: 0.75rem;
+      font-size: 1.3rem;
+      color: rgba(30,50,70,0.75);
+      font-weight: 400;
+    }
+
+    .hero {
+      max-width: 950px;
+      margin: 4rem auto;
+      padding: 4rem 3rem;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(30px);
+      border-radius: 30px;
+      box-shadow: 0 8px 32px rgba(60,120,200,0.15);
+      border: 1px solid rgba(255,255,255,0.6);
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #1A365D;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #2C6EF2, #00AEEF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #40566E;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(25px);
+      border-radius: 20px;
+      padding: 2.8rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 6px 25px rgba(80,150,220,0.12);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(80,150,220,0.2);
+    }
+
+    .feature-icon {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #4A90E2, #FFE882);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .feature h3 {
+      font-size: 1.6rem;
+      color: #1a365d;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .feature p {
+      color: #465e75;
+      line-height: 1.7;
+    }
+
+    .protocol {
+      max-width: 1000px;
+      margin: 6rem auto;
+      padding: 4rem 3rem;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(25px);
+      border-radius: 28px;
+      box-shadow: 0 8px 30px rgba(100,170,230,0.15);
+      border: 1px solid rgba(255,255,255,0.6);
+      position: relative;
+      z-index: 2;
+    }
+
+    .protocol h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin-bottom: 2.5rem;
+    }
+
+    .network {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .node {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E8F5FF, #FFF6DB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a365d;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(70,130,200,0.25);
+      border: 2px solid rgba(255,255,255,0.8);
+      animation: floatNode 4.5s ease-in-out infinite;
+      font-size: 1.05rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .node:nth-child(2) { animation-delay: 1.2s; }
+    .node:nth-child(3) { animation-delay: 2.4s; }
+
+    @keyframes floatNode {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .protocol p {
+      text-align: center;
+      color: #40566E;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-top: 2.5rem;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 5rem 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta button {
+      padding: 1.3rem 3.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #4A90E2 0%, #6BCBFF 60%, #FFE882 100%);
+      border: none;
+      color: white;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(74,144,226,0.35);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(74,144,226,0.5);
+    }
+
+    footer {
+      text-align: center;
+      color: #506070;
+      padding: 3rem 1rem 5rem;
+      font-size: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sky-gradient"></div>
+
+  <div class="floating-islands">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Crystal_illustration.svg" class="crystal" alt="">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Crystal_illustration.svg" class="crystal" alt="">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Crystal_illustration.svg" class="crystal" alt="">
+  </div>
+
+  <header>
+    <div class="logo">⛅ Skyward Protocol</div>
+    <div class="tagline">Collective prosperity through community-powered DeFi</div>
+  </header>
+
+  <section class="hero">
+    <h2>Post-Capitalist Finance for Local Communities</h2>
+    <p>Imagine a future where decentralized finance powers care, not profit. Skyward enables local pods to pool stablecoins, generate sustainable yield, and democratically decide how to fund shared needs — from education to mutual aid.</p>
+    <p>Built for fairness, transparency, and long-term community resilience.</p>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">🏘️</div>
+      <h3>Community Pods</h3>
+      <p>Form neighborhood-based pods to co-manage funds, vote on local initiatives, and foster financial autonomy through collective action.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💰</div>
+      <h3>Sustainable Yield</h3>
+      <p>Generate conservative, transparent yield strategies on stablecoins — prioritizing safety and predictable growth for your community.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🗳️</div>
+      <h3>Democratic Control</h3>
+      <p>Each member has one vote. Communities shape priorities, allocate funds, and evolve protocol governance together.</p>
+    </div>
+  </section>
+
+  <section class="protocol">
+    <h2>How It Works</h2>
+    <div class="network">
+      <div class="node">Pod A<br>Community</div>
+      <div class="node">Pod B<br>Community</div>
+      <div class="node">Pod C<br>Community</div>
+    </div>
+    <p>Each pod deposits stablecoins → Yield is generated via curated DeFi strategies → Communities vote on allocations → A small fee sustains protocol growth.</p>
+  </section>
+
+  <div class="cta">
+    <button onclick="alert('Coming soon: Launch your community pod on Skyward')">Launch Your Pod</button>
+  </div>
+
+  <footer>
+    <p>🌱 Growing together, rising together 🌱</p>
+    <p style="opacity:0.75;">Powered by solidarity • Secured by decentralization</p>
+  </footer>
+</body>
+</html>
